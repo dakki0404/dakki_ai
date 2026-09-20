@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="DakkiAI — a private browser-based AI assistant powered by WebLLM.">
+  <title>DakkiAI</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="DakkiAI sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span>D</span>
+        </div>
+        <div class="brand-copy">
+          <strong>DakkiAI</strong>
+          <span>Browser AI</span>
+        </div>
+      </div>
+
+      <button id="newChatBtn" class="primary-action" type="button">
+        <span class="button-icon" aria-hidden="true">＋</span>
+        New chat
+      </button>
+
+      <div class="side-group">
+        <div class="side-label">AI MODEL</div>
+        <div class="model-card">
+          <div class="model-icon" aria-hidden="true">✦</div>
+          <div class="model-copy">
+            <strong>Llama 3.2 · 1B</strong>
+            <span id="modelStatusText">Not loaded</span>
+          </div>
+          <span id="statusDot" class="status-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="side-group">
+        <div class="side-label">ABOUT</div>
+        <div class="about-card">
+          <p>Runs locally in your browser with WebLLM + WebGPU.</p>
+          <div class="privacy-note">
+            <span aria-hidden="true">✓</span>
+            <span>Your prompts stay in this browser.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="clearBtn" class="ghost-action" type="button">
+          <span aria-hidden="true">⌫</span>
+          Clear conversation
+        </button>
+        <p class="version">DakkiAI · Static GitHub Pages app</p>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-copy">
+          <div class="eyebrow">
+            <span id="statusPill" class="status-pill">
+              <span class="status-pill-dot" aria-hidden="true"></span>
+              <span id="statusText">Ready to start</span>
+            </span>
+          </div>
+          <h1>AI Assistant</h1>
+          <p>Ask questions, learn, brainstorm, and code.</p>
+        </div>
+
+        <button id="loadBtn" class="load-button" type="button">
+          <span class="load-button-icon" aria-hidden="true">✦</span>
+          <span id="loadBtnText">Load AI</span>
+        </button>
+      </header>
+
+      <section id="chat" class="chat" aria-live="polite">
+        <div id="welcome" class="welcome">
+          <div class="hero-orb" aria-hidden="true">
+            <div class="hero-orb-core">D</div>
+          </div>
+
+          <div class="welcome-badge">PRIVATE · IN-BROWSER</div>
+          <h2>Hey, I'm <span>DakkiAI</span>.</h2>
+          <p class="welcome-text">
+            A small AI assistant that runs right on your device.
+            Start with one of these ideas or type anything below.
+          </p>
+
+          <div class="prompt-grid">
+            <button class="prompt-card" type="button" data-prompt="Explain photosynthesis in simple words">
+              <span class="prompt-icon">🌱</span>
+              <span>
+                <strong>Explain a topic</strong>
+                <small>Make something hard easy</small>
+              </span>
+            </button>
+
+            <button class="prompt-card" type="button" data-prompt="Give me a fun Python project idea that is beginner friendly">
+              <span class="prompt-icon">🐍</span>
+              <span>
+                <strong>Get a coding idea</strong>
+                <small>Build something fun</small>
+              </span>
+            </button>
+
+            <button class="prompt-card" type="button" data-prompt="Help me understand alternate interior angles with an example">
+              <span class="prompt-icon">📐</span>
+              <span>
+                <strong>Study geometry</strong>
+                <small>Learn step by step</small>
+              </span>
+            </button>
+
+            <button class="prompt-card" type="button" data-prompt="Brainstorm 10 original names for a technology project">
+              <span class="prompt-icon">💡</span>
+              <span>
+                <strong>Brainstorm</strong>
+                <small>Come up with ideas</small>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div id="errorBar" class="error-bar" hidden>
+        <div class="error-copy">
+          <strong id="errorTitle">Something went wrong.</strong>
+          <span id="errorMessage"></span>
+        </div>
+        <button id="dismissErrorBtn" type="button" aria-label="Dismiss error">×</button>
+      </div>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <div class="composer-inner">
+          <textarea
+            id="input"
+            rows="1"
+            maxlength="4000"
+            placeholder="Message DakkiAI…"
+            aria-label="Message DakkiAI"
+          ></textarea>
+          <button id="sendBtn" class="send-button" type="submit" aria-label="Send message" disabled>
+            <span aria-hidden="true">↑</span>
+          </button>
+        </div>
+      </form>
+      <div class="hint">Enter to send · Shift + Enter for a new line</div>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
